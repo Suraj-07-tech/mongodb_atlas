@@ -1,11 +1,18 @@
+require("dotenv").config();
+const express = require("express");
+const app = express();
 const mongoose = require("mongoose");
 
-(async () => {
+require("./conn");
 
-    try {
-        await mongoose.connect("mongodb+srv://mongo:mongo123@cluster0.cynp1me.mongodb.net/FirstAtlas");
-        console.log("Connection Successful");
-    } catch (error) {
-        console.log("Connection Failed");
-    }
-})();
+app.get("/", (req, res) => {
+    res.send("Homepage");
+})
+app.get("/user", (req, res) => {
+    res.send("User Page");
+})
+
+
+app.listen(3000, () => {
+    console.log("Listening at port 3000");
+})
